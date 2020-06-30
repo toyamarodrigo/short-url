@@ -29,6 +29,14 @@ app.use('/api/redirect', redirect);
 app.get('/:hash', (req, res) => {
   const id = req.params.hash;
   console.log(id);
+  URL.findOne({ _id: id }, (err, doc) => {
+    if (doc) {
+      console.log(doc.url);
+      res.redirect('http://' + doc.url);
+    } else {
+      console.log(err);
+    }
+  });
 });
 
 // Path
