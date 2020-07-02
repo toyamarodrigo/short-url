@@ -45,24 +45,34 @@ export default function App() {
       <Container>
         <Row className="align-items-center vertical-center">
           <Col>
-            <Form onSubmit={handleSubmit}>
-              <Row className="justify-content-center">
-                <Col xs={6} className="text-center">
-                  <input
-                    className="w-100"
-                    type="text"
-                    name="url"
-                    placeholder="Enter URL including the http protocol"
-                    onChange={handleChange}
-                  />
-                </Col>
-                <Col xs={3}>
-                  <input type="submit" value="Shorten" />
-                </Col>
-                <Col xs={12} className="text-center">
-                  <span id="result">{link}</span>
-                </Col>
-              </Row>
+            <Form onSubmit={handleSubmit} className="form-group">
+              <Container>
+                <Row className="justify-content-center">
+                  <Col xs={12} md={6} className="text-center my-2 p-0">
+                    <input
+                      className="form-control w-100 inputStyle"
+                      type="text"
+                      name="url"
+                      placeholder="Enter URL including the http protocol"
+                      onChange={handleChange}
+                    />
+                  </Col>
+                  <Col xs={12} md={3} className="text-center my-2 p-0">
+                    <input
+                      className="btn btn-warning btn-block btnStyle"
+                      type="submit"
+                      value="Shorten"
+                    />
+                  </Col>
+                </Row>
+              </Container>
+              <Container>
+                <Row className={link !== '' ? 'display-result justify-content-center' : 'hide-result'}>
+                  <Col xs={12} md={9} className="text-center py-5">
+                    <span id="result">{link}</span>
+                  </Col>
+                </Row>
+              </Container>
             </Form>
           </Col>
         </Row>
