@@ -14,6 +14,11 @@ export default function App() {
     setUrl(e.target.value);
   };
 
+  const handleLinkChange = (e) => {
+    e.persist();
+    setLink(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const validURL = validator.isURL(url, { require_protocol: true });
@@ -67,9 +72,15 @@ export default function App() {
                 </Row>
               </Container>
               <Container>
-                <Row className={link !== '' ? 'display-result justify-content-center' : 'hide-result'}>
+                <Row
+                  className={
+                    link !== ''
+                      ? 'display-result justify-content-center'
+                      : 'hide-result'
+                  }
+                >
                   <Col xs={12} md={9} className="text-center py-5">
-                    <span id="result">{link}</span>
+                    <span id="result" onChange={handleLinkChange}>{link}</span>
                   </Col>
                 </Row>
               </Container>
