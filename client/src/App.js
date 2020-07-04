@@ -34,8 +34,10 @@ export default function App() {
       axios
         .post('http://localhost:5000/api/shorten', { url })
         .then((res) => {
-          console.log(res.data.hash);
-          setLink(`http://shortlink.sh/${res.data.hash}`);
+          // Example
+          // setLink(`http://shortlink.sh/${res.data.hash}`);
+          // console.log(res.data.hash);
+          setLink(`http://localhost:5000/${res.data.hash}`);
         })
         .catch((err) => console.log(err));
     }
@@ -62,7 +64,7 @@ export default function App() {
                       onChange={handleChange}
                     />
                   </Col>
-                  <Col xs={12} md={3} className="text-center my-2 p-0">
+                  <Col xs={12} md={2} className="text-center my-2 p-0">
                     <input
                       className="btn btn-warning btn-block btnStyle"
                       type="submit"
@@ -80,7 +82,11 @@ export default function App() {
                   }
                 >
                   <Col xs={12} md={9} className="text-center py-5">
-                    <span id="result" onChange={handleLinkChange}>{link}</span>
+                    <a href={link} target="_blank">
+                      <span id="result" onChange={handleLinkChange}>
+                        {link}
+                      </span>
+                    </a>
                   </Col>
                 </Row>
               </Container>
