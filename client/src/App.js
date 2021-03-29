@@ -32,12 +32,14 @@ export default function App() {
 
       // Post values
       axios
-        .post('http://localhost:5000/api/shorten', { url })
+        .post('http://rt-shorten-url.herokuapp.com/api/shorten', { url })
+        // .post('http://localhost:5000/api/shorten', { url })
         .then((res) => {
           // Example
           // setLink(`http://shortlink.sh/${res.data.hash}`);
           // console.log(res.data.hash);
-          setLink(`http://localhost:5000/${res.data.hash}`);
+          setLink(`http://rt-shorten-url.herokuapp.com/${res.data.hash}`);
+          // setLink(`http://localhost:5000/${res.data.hash}`);
         })
         .catch((err) => console.log(err));
     }
